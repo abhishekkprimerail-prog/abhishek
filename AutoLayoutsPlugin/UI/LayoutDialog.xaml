@@ -1,0 +1,120 @@
+<Window x:Class="AutoLayoutsPlugin.UI.LayoutDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="AutoCAD Auto Layouts" Height="600" Width="500"
+        WindowStartupLocation="CenterScreen"
+        Background="#F5F5F5">
+    <Grid Margin="15">
+        <StackPanel VerticalAlignment="Top">
+            <!-- Title -->
+            <TextBlock Text="AutoCAD Auto Layouts" 
+                       FontSize="20" 
+                       FontWeight="Bold" 
+                       Margin="0,0,0,20"
+                       Foreground="#333333"/>
+
+            <!-- Layout Type Selection -->
+            <Border BorderBrush="#CCCCCC" BorderThickness="1" Padding="15" Margin="0,0,0,15" Background="White">
+                <StackPanel>
+                    <TextBlock Text="Layout Type" FontWeight="Bold" Margin="0,0,0,10"/>
+                    <RadioButton x:Name="OneViewportRadioButton" 
+                                 Content="One Viewport" 
+                                 Margin="0,0,0,8"
+                                 IsChecked="True"
+                                 Checked="OneViewportRadioButton_Checked"/>
+                    <RadioButton x:Name="TwoViewportsRadioButton" 
+                                 Content="Two Viewports" 
+                                 Margin="0,0,0,0"
+                                 Checked="TwoViewportsRadioButton_Checked"/>
+                </StackPanel>
+            </Border>
+
+            <!-- Sheet Numbers Selection -->
+            <Border BorderBrush="#CCCCCC" BorderThickness="1" Padding="15" Margin="0,0,0,15" Background="White">
+                <StackPanel>
+                    <TextBlock Text="Sheet Numbers (Report 1)" FontWeight="Bold" Margin="0,0,0,10"/>
+                    <Button Content="Select Sheet Numbers" 
+                            Click="SelectSheetNumbersButton_Click"
+                            Padding="8,5"
+                            Background="#0078D4"
+                            Foreground="White"
+                            Margin="0,0,0,10"/>
+                    <TextBlock x:Name="SheetNumbersTextBlock" 
+                               Text="No sheet numbers selected"
+                               Foreground="#666666"
+                               TextWrapping="Wrap"/>
+                </StackPanel>
+            </Border>
+
+            <!-- First Viewport Selection -->
+            <Border BorderBrush="#CCCCCC" BorderThickness="1" Padding="15" Margin="0,0,0,15" Background="White">
+                <StackPanel>
+                    <TextBlock Text="First Viewport" FontWeight="Bold" Margin="0,0,0,10"/>
+                    <Button Content="Select First Viewport" 
+                            Click="SelectFirstViewportButton_Click"
+                            Padding="8,5"
+                            Background="#0078D4"
+                            Foreground="White"
+                            Margin="0,0,0,10"/>
+                    <TextBlock x:Name="FirstViewportTextBlock" 
+                               Text="No viewport selected"
+                               Foreground="#666666"
+                               TextWrapping="Wrap"/>
+                </StackPanel>
+            </Border>
+
+            <!-- Second Viewport Selection (Hidden by default) -->
+            <Border x:Name="SecondViewportPanel"
+                    BorderBrush="#CCCCCC" 
+                    BorderThickness="1" 
+                    Padding="15" 
+                    Margin="0,0,0,15" 
+                    Background="White"
+                    Visibility="Collapsed">
+                <StackPanel>
+                    <TextBlock Text="Second Viewport" FontWeight="Bold" Margin="0,0,0,10"/>
+                    <Button Content="Select Second Viewport" 
+                            Click="SelectSecondViewportButton_Click"
+                            Padding="8,5"
+                            Background="#0078D4"
+                            Foreground="White"
+                            Margin="0,0,0,10"/>
+                    <TextBlock x:Name="SecondViewportTextBlock" 
+                               Text="No viewport selected"
+                               Foreground="#666666"
+                               TextWrapping="Wrap"/>
+                </StackPanel>
+            </Border>
+
+            <!-- Dual Viewport Controls (Hidden by default) -->
+            <StackPanel x:Name="DualViewportControls" Visibility="Collapsed" Margin="0,0,0,15">
+                <CheckBox x:Name="UseCommonDimensionsCheckBox" 
+                          Content="Use same dimensions for both viewports"
+                          Margin="0,0,0,10"/>
+                <CheckBox x:Name="FirstReportOnTopCheckBox" 
+                          Content="First report on top"
+                          Margin="0,0,0,0"
+                          IsChecked="True"/>
+            </StackPanel>
+
+            <!-- Buttons -->
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,20,0,0">
+                <Button x:Name="ExecuteButton" 
+                        Content="Execute" 
+                        Click="ExecuteButton_Click"
+                        Padding="15,8"
+                        Background="#107C10"
+                        Foreground="White"
+                        Margin="0,0,10,0"
+                        MinWidth="80"/>
+                <Button x:Name="CancelButton" 
+                        Content="Cancel" 
+                        Click="CancelButton_Click"
+                        Padding="15,8"
+                        Background="#CCCCCC"
+                        Foreground="#333333"
+                        MinWidth="80"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>
